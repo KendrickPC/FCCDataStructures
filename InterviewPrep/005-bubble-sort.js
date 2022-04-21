@@ -1,15 +1,12 @@
 function bubbleSort(array) {
-  const arrCopy = array.slice();
-  for (let i=0; i<arrCopy.length; i++) {
-    for (let j=0; j<arrCopy.length; j++) {
-      if (arrCopy[j] > arrCopy[j+1]) {
-        swap(j, j+1, arrCopy);
+  for (let i=0; i<array.length; i++) {
+    for (let j=0; j<array.length; j++) {
+      if (array[j] > array[j+1]) {
+        swap(j, j+1, array);
       }
     }
   }
-  console.log(array.length);
-  console.log(arrCopy.length);
-  return arrCopy;
+  return array;
 }
 
 function swap(x, y, arr) {
