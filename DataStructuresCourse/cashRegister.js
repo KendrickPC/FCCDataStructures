@@ -2,6 +2,8 @@ function checkCashRegister(price, cash, cid) {
   let change = {status: "", change: []};
   const hash = {};
   
+  const newHash = hash;
+  console.log(newHash);
   // Build adjacency list object:
   for (let obj of cid) {
     const [denom, amount] = obj;
