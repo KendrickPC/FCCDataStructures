@@ -36,53 +36,20 @@ class Set {
   size() {
     return this.length;
   }
-  // This is our union method 
-  union(set) {
-    const newSet = new Set();
-    this.values().forEach(value => {
-      newSet.add(value);
-    })
-    set.values().forEach(value => {
-      newSet.add(value);
-    })
-
-    return newSet;
-  }
-  // This is our intersection method
-  intersection(set) {
-    const newSet = new Set();
-    this.values().forEach(value => {
-      if (set.values().includes(value))
-          newSet.add(value);
-    })
-
-    return newSet;
-  }
   // Only change code below this line
-  difference(newSet) {
-    const diffSet = new Set();
-    const placeHolder = [];
-    for (let key in newSet.dictionary) {
-      placeHolder.push(key);
-    }
+  isSubsetOf(newSet) {
     for (let key in this.dictionary) {
-      if (!(placeHolder.includes(key))) {
-        diffSet.add(key);
+      if (newSet.has(key) === false) {
+        return false;
       }
     }
-    return diffSet;
+    return true;
   }
   // Only change code above this line
 }
 
-
-// Create a method on our Set data structure called difference.
-// A difference of sets should compare two sets and return the items present
-// in the first set that are absent in the second.
-// This method should take another Set as an argument and return the difference of the two sets.
-
 const setA = new Set();
-const arr1 = ['a', 'b', 'c'];
+const arr1 = ['a', 'b'];
 for (let el of arr1) {
   setA.add(el);
 }
@@ -94,5 +61,15 @@ for (let el of arr2) {
 }
 
 
-console.log(setA.difference(setB));
-// console.log(setA.values());
+console.log(setA.isSubsetOf(setB));
+// console.log(setA);
+// console.log(setB);
+
+
+/*
+Perform a subset test on 2 sets of data. We will create a method on our Set data structure called isSubsetOf.
+This will compare the first set against the second, and if the first set is fully contained within the second,
+it will return true.
+
+For example, if setA = ['a','b'] and setB = ['a','b','c','d'], then setA is a subset of setB, so setA.isSubsetOf(setB) should return true.
+*/
